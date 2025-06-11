@@ -126,7 +126,7 @@ export default function ZeekrChatbot() {
           </div>
 
           {/* טקסט תנאי שימוש */}
-          <p className="text-[10px] text-gray-500 text-right pt-1 pr-1">
+          <p dir="rtl" style={{unicodeBidi:"plaintext"}} className="text-[10px] text-gray-500 text-right pt-1 pr-1">
             התכתבות עם הצ׳אטבוט מהווה הסכמה עם{' '}
             <button
               type="button"
@@ -143,8 +143,15 @@ export default function ZeekrChatbot() {
 
   {/* פופ‑אפ תנאי שימוש */}
   {showTerms && (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto rtl p-6 relative">
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4" onClick={() => setShowTerms(false)}>
+      <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto rtl p-6 relative" onClick={(e) => e.stopPropagation()}>
+      <button
+              className="absolute top-2 left-2 text-gray-500 hover:text-gray-700 text-lg"
+              onClick={() => setShowTerms(false)}
+              aria-label="סגור"
+            >
+              ×
+            </button>
         <h3 className="text-lg font-bold mb-4 text-center">תנאי שימוש</h3>
 
         <ol className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800">
@@ -174,7 +181,7 @@ export default function ZeekrChatbot() {
           </li>
           <li>
             <strong>פרטיות ושמירת מידע&nbsp;–</strong>
-            &nbsp;כל שיחה ומידע שנמסר במסגרת השימוש בש
+            &nbsp; כל שיחה ומידע שנמסר במסגרת השימוש בש
           </li>
         </ol>
             </div></div>) }
