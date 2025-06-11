@@ -181,7 +181,7 @@ export default function ZeekrChatbot() {
           </li>
           <li>
             <strong>פרטיות ושמירת מידע&nbsp;–</strong>
-            &nbsp;כל שיחה ומידע שנמסר במסגרת השימוש בש
+            &nbsp; כל שיחה ומידע שנמסר במסגרת השימוש בש
           </li>
         </ol>
             </div></div>) }
