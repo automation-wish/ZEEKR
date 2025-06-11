@@ -8,6 +8,7 @@ export default function ZeekrChatbot() {
   const [messages, setMessages] = useState([]);
   const [input,    setInput]    = useState("");
   const [loading,  setLoading]  = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   const messagesEnd = useRef(null);
   const sessionId   = useRef(crypto.randomUUID());
 
@@ -127,17 +128,57 @@ export default function ZeekrChatbot() {
           {/* טקסט תנאי שימוש */}
           <p className="text-[10px] text-gray-500 text-right pt-1 pr-1">
             התכתבות עם הצ׳אטבוט מהווה הסכמה עם{' '}
-            <a
-              href="/terms"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => setShowTerms(true)}
               className="text-[#003399] underline hover:no-underline"
             >
               תנאי השימוש
-            </a>
+            </button>
           </p>
         </footer>
       </div>
-    </div>
-  );
-}
+   
+
+
+  {/* פופ‑אפ תנאי שימוש */}
+  {showTerms && (
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto rtl p-6 relative">
+        <h3 className="text-lg font-bold mb-4 text-center">תנאי שימוש</h3>
+
+        <ol className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800">
+          <li>
+            <strong>הגבלת אחריות על תוכן התשובות&nbsp;–</strong>
+            &nbsp;התשובות הניתנות על ידי הסוכן הן לצרכים אינפורמטיביים בלבד ואינן מחליפות ייעוץ מקצועי של גורם מוסמך.
+          </li>
+          <li>
+            <strong>טעויות ובאגים טכנולוגיים&nbsp;–</strong>
+            &nbsp;ייתכנו טעויות, השמטות או אי‑דיוקים בתשובות. כמו כן, תיתכנה תקלות מערכת, תקלות רשת או הפסקות חשמל אשר עלולות להשפיע על פעילות השירות וזמינותו.
+          </li>
+          <li>
+            <strong>זמינות השירות&nbsp;–</strong>
+            &nbsp;השירות עשוי להיות לא זמין מעת לעת בשל עבודות תחזוקה, עומסים חריגים או תקלות טכניות שאינן בשליטת המפעיל.
+          </li>
+          <li>
+            <strong>אחריות המשתמש&nbsp;–</strong>
+            &nbsp;השימוש בשירות נעשה באחריות המשתמש בלבד. מומלץ לאמת מידע חשוב או רגיש לפני נקיטת פעולה, במיוחד בתחומים טכניים או בטיחותיים.
+          </li>
+          <li>
+            <strong>מקור המידע ועדכניותו&nbsp;–</strong>
+            &nbsp;המידע המועבר בסוכן מבוסס על מקורות רשמיים של היצרן ועל ידע מצטבר של היבואן. עם זאת, ייתכנו פערים בין המידע הזמין לבין שינויים, עדכונים או הוראות חדשות שטרם הוזנו למערכת.
+          </li>
+          <li>
+            <strong>זהות והיקף השירות&nbsp;–</strong>
+            &nbsp;הסוכן מופעל על ידי היבואן ונשען על מקורות רשמיים של היצרן ועל ידע מצטבר של היבואן, אך אינו מבטיח זמינות או דיוק מלא בכל מצב, ואינו מחליף שיקול דעת מקצועי או בדיקה עצמאית.
+          </li>
+          <li>
+            <strong>פרטיות ושמירת מידע&nbsp;–</strong>
+            &nbsp;כל שיחה ומידע שנמסר במסגרת השימוש בש
+          </li>
+        </ol>
+            </div></div>) }
+            </div>
+          );
+        }
+
