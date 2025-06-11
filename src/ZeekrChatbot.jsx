@@ -106,20 +106,36 @@ export default function ZeekrChatbot() {
           <div ref={messagesEnd} />
         </main>
 
-        <footer className="w-full max-w-md flex items-center gap-2 mt-auto flex-row-reverse">
-          <input
-            type="text"
-            dir="rtl"
-            style={{ unicodeBidi: "plaintext" }}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="איך אפשר לעזור לך?"
-            className="flex-1 text-sm border border-gray-300 rounded-[8px] px-4 py-2 focus:outline-none focus:ring focus:border-[#003399] text-right"
-          />
-          <button onClick={handleSend}>
-            <img src={sendIcon} alt="send" className="w-[56px] h-[56px]" />
-          </button>
+       {/* אזור קלט + כפתור שליחה */}
+       <footer className="w-full max-w-md flex flex-col gap-1 mt-auto">
+          <div className="flex items-center gap-2 flex-row-reverse">
+            <input
+              type="text"
+              dir="rtl"
+              style={{ unicodeBidi: "plaintext" }}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
+              placeholder="איך אפשר לעזור לך?"
+              className="flex-1 text-sm border border-gray-300 rounded-[8px] px-4 py-2 focus:outline-none focus:ring focus:border-[#003399] text-right"
+            />
+            <button onClick={handleSend} className="shrink-0">
+              <img src={sendIcon} alt="send" className="w-[56px] h-[56px]" />
+            </button>
+          </div>
+
+          {/* טקסט תנאי שימוש */}
+          <p className="text-[10px] text-gray-500 text-right pt-1 pr-1">
+            התכתבות עם הצ׳אטבוט מהווה הסכמה עם{' '}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#003399] underline hover:no-underline"
+            >
+              תנאי השימוש
+            </a>
+          </p>
         </footer>
       </div>
     </div>
