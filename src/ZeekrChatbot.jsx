@@ -154,7 +154,7 @@ export default function ZeekrChatbot() {
             </button>
         <h3 className="text-lg font-bold mb-4 text-center">תנאי שימוש</h3>
 
-        <ol className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800">
+        <ol dir="rtl" className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800">
           <li>
             <strong>הגבלת אחריות על תוכן התשובות&nbsp;–</strong>
             &nbsp;התשובות הניתנות על ידי הסוכן הן לצרכים אינפורמטיביים בלבד ואינן מחליפות ייעוץ מקצועי של גורם מוסמך.
