@@ -12,6 +12,16 @@ export default function ZeekrChatbot() {
   const messagesEnd = useRef(null);
   const sessionId   = useRef(crypto.randomUUID());
 
+  // הודעת פתיחה ברגע שהמסך נטען
+  useEffect(() => {
+    setMessages([
+      {
+        role: "assistant",
+        content: "היי! אני הצ'אטבוט של זיקר!\nאשמח לקבל את מספר הרכב שלך כדי שאוכל לזהות אותך",
+      },
+    ]);
+  }, []);
+
   // גלילה אוטומטית
   useEffect(() => {
     messagesEnd.current?.scrollIntoView({ behavior: "smooth" });
