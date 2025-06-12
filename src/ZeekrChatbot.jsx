@@ -111,7 +111,7 @@ export default function ZeekrChatbot() {
               dir="rtl"
               className="w-full text-base text-gray-500 leading-relaxed whitespace-pre-wrap break-words my-3 px-1"
             >
-              הבוט מקליד...
+             אני חושב…
             </div>
           )}
           <div ref={messagesEnd} />
