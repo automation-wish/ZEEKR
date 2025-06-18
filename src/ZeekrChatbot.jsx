@@ -128,7 +128,9 @@ export default function ZeekrChatbot() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
               placeholder="איך אפשר לעזור לך?"
-              className="flex-1 text-sm border border-gray-300 rounded-[8px] px-4 py-2 focus:outline-none focus:ring focus:border-[#003399] text-right"
+              className="flex-1 border border-gray-300 rounded-[8px]
+             px-4 py-2 focus:outline-none focus:ring focus:border-[#003399]
+             text-right text-[16px]"
             />
             <button onClick={handleSend} className="shrink-0">
               <img src={sendIcon} alt="send" className="w-[56px] h-[56px]" />
