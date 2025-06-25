@@ -3,6 +3,9 @@ import logoText from "./assets/zeekr-text-logo.png";
 import logo      from "./assets/zeekr-logo.png";
 import carImage  from "./assets/zeekr-car.png";
 import sendIcon  from "./assets/send-icon.png";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 
 export default function ZeekrChatbot() {
   const [messages, setMessages] = useState([]);
@@ -85,6 +88,11 @@ export default function ZeekrChatbot() {
           className="w-full max-w-md flex-1 overflow-y-auto scroll-smooth mt-6 mb-4 space-y-2 px-4"
           style={{ minHeight: 0 }}
         >
+        
+<ReactMarkdown
+  remarkPlugins={[remarkGfm]}
+  components={{ a: (props)=><a {...props} target="_blank" rel="noopener"/> }}
+>
           {messages.map((m, i) =>
             m.role === "user" ? (
               <div
@@ -115,6 +123,7 @@ export default function ZeekrChatbot() {
             </div>
           )}
           <div ref={messagesEnd} />
+          </ReactMarkdown>
         </main>
 
        {/* אזור קלט + כפתור שליחה */}
