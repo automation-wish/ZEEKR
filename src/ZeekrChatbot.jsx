@@ -1,23 +1,24 @@
 import { useState, useRef, useEffect } from "react";
-import logoText from "./assets/zeekr-text-logo.png";
-import logo      from "./assets/zeekr-logo.png";
-import carImage  from "./assets/zeekr-car.png";
-import sendIcon  from "./assets/send-icon.png";
+import logoText   from "./assets/zeekr-text-logo.png";
+import logo       from "./assets/zeekr-logo.png";
+import heroImage  from "./assets/Zeekr_FamilyShot_300x600.jpg"; // התמונה החדשה
+import sendIcon   from "./assets/send-icon.png";
 
 export default function ZeekrChatbot() {
   const [messages, setMessages] = useState([]);
-  const [input,    setInput]    = useState("");
-  const [loading,  setLoading]  = useState(false);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const messagesEnd = useRef(null);
-  const sessionId   = useRef(crypto.randomUUID());
+  const sessionId = useRef(crypto.randomUUID());
 
   // הודעת פתיחה ברגע שהמסך נטען
   useEffect(() => {
     setMessages([
       {
         role: "assistant",
-        content: "היי! אני הצ'אטבוט של זיקר!\nאשמח לקבל את מספר הרכב שלך כדי שאוכל לזהות אותך",
+        content:
+          "היי! אני הצ'אטבוט של זיקר!\nאשמח לקבל את מספר הרכב שלך כדי שאוכל לזהות אותך",
       },
     ]);
   }, []);
@@ -65,19 +66,30 @@ export default function ZeekrChatbot() {
         <img src={logoText} alt="ZEEKR" className="h-6 w-auto" />
       </div>
 
-      {/* חצי שמאלי – תמונת רכב */}
-      <div className="md:w-1/2 w-full h-screen hidden md:block">
-        <img src={carImage} alt="zeekr car" className="w-full h-full object-cover" />
+      {/* טור שמאל – תמונת רכב (רבע מסך בדסקטופ) */}
+      <div className="xl:w-1/4 lg:w-1/4 md:w-1/4 w-full h-screen hidden md:block">
+        <img
+          src={heroImage}
+          alt="Zeekr models"
+          className="w-full h-full object-cover"
+        />
       </div>
 
-      {/* חצי ימני – צ'אט */}
-      <div className="md:w-1/2 w-full h-screen flex flex-col items-center justify-between bg-gradient-to-b from-white to-gray-100 pt-20 px-4 pb-6">
+      {/* טור ימין – צ'אט (שלושה־רבעי מסך בדסקטופ) */}
+      <div className="xl:w-3/4 lg:w-3/4 md:w-3/4 w-full h-screen flex flex-col items-center justify-between bg-gradient-to-b from-white to-gray-100 pt-20 px-4 pb-6">
         <header className="flex flex-col items-center gap-2">
           <div className="h-20 w-20 rounded-full bg-white p-3 shadow flex items-center justify-center">
             <img src={logo} alt="icon" className="h-10 w-10" />
           </div>
           <h2 className="text-xl font-bold">ZEEKR CHATBOT</h2>
           <p className="text-sm text-gray-600">אנחנו כאן לשירותך 24/7</p>
+
+          {/* דיסקליימר קטן – לפי הבקשה */}
+          <p dir="rtl" className="text-xs text-gray-500 leading-5 max-w-md text-center mt-1">
+            ZEEKR הוא רכב חדשני שמתעדכן מעת לעת, לעתים אף מהר יותר ממני.<br />
+            לכן, במענה שלי ייתכנו טעויות או ופערים, אשמח ואודה לכם אם תעדכנו אותי כאן בצ׳אט
+            במקרה של מידע שנראה לא מדויק או שגוי.
+          </p>
         </header>
 
         {/* תיבת הצ'אט */}
@@ -85,7 +97,6 @@ export default function ZeekrChatbot() {
           className="w-full max-w-md flex-1 overflow-y-auto scroll-smooth mt-6 mb-4 space-y-2 px-4"
           style={{ minHeight: 0 }}
         >
-      
           {messages.map((m, i) =>
             m.role === "user" ? (
               <div
@@ -112,14 +123,14 @@ export default function ZeekrChatbot() {
               dir="rtl"
               className="w-full text-base text-gray-500 leading-relaxed whitespace-pre-wrap break-words my-3 px-1"
             >
-             אני חושב…
+              אני חושב…
             </div>
           )}
           <div ref={messagesEnd} />
         </main>
 
-       {/* אזור קלט + כפתור שליחה */}
-       <footer className="w-full max-w-md flex flex-col gap-1 mt-auto">
+        {/* אזור קלט + כפתור שליחה */}
+        <footer className="w-full max-w-md flex flex-col gap-1 mt-auto">
           <div className="flex items-center gap-2 flex-row-reverse">
             <input
               type="text"
@@ -129,18 +140,20 @@ export default function ZeekrChatbot() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
               placeholder="איך אפשר לעזור לך?"
-              className="flex-1 border border-gray-300 rounded-[8px]
-             px-4 py-2 focus:outline-none focus:ring focus:border-[#003399]
-             text-right text-[16px]"
+              className="flex-1 border border-gray-300 rounded-[8px] px-4 py-2 focus:outline-none focus:ring focus:border-[#003399] text-right text-[16px]"
             />
-            <button onClick={handleSend} className="shrink-0">
+            <button onClick={handleSend} className="shrink-0" aria-label="שלח">
               <img src={sendIcon} alt="send" className="w-[56px] h-[56px]" />
             </button>
           </div>
 
           {/* טקסט תנאי שימוש */}
-          <p dir="rtl" style={{unicodeBidi:"plaintext"}} className="text-[10px] text-gray-500 text-right pt-1 pr-1">
-            התכתבות עם הצ׳אטבוט מהווה הסכמה עם{' '}
+          <p
+            dir="rtl"
+            style={{ unicodeBidi: "plaintext" }}
+            className="text-[10px] text-gray-500 text-right pt-1 pr-1"
+          >
+            התכתבות עם הצ׳אטבוט מהווה הסכמה עם{" "}
             <button
               type="button"
               onClick={() => setShowTerms(true)}
@@ -151,54 +164,58 @@ export default function ZeekrChatbot() {
           </p>
         </footer>
       </div>
-   
 
-
-  {/* פופ‑אפ תנאי שימוש */}
-  {showTerms && (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4" onClick={() => setShowTerms(false)}>
-      <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto rtl p-6 relative" onClick={(e) => e.stopPropagation()}>
-      <button
+      {/* פופ-אפ תנאי שימוש */}
+      {showTerms && (
+        <div
+          className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
+          onClick={() => setShowTerms(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto rtl p-6 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
               className="absolute top-2 left-2 text-gray-500 hover:text-gray-700 text-lg"
               onClick={() => setShowTerms(false)}
               aria-label="סגור"
             >
               ×
             </button>
-        <h3 className="text-lg font-bold mb-4 text-center">תנאי שימוש</h3>
+            <h3 className="text-lg font-bold mb-4 text-center">תנאי שימוש</h3>
 
-        <ol dir="rtl" className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800">
-          <li>
-            <strong>הגבלת אחריות על תוכן התשובות&nbsp;–</strong>
-            &nbsp;התשובות הניתנות על ידי הסוכן הן לצרכים אינפורמטיביים בלבד ואינן מחליפות ייעוץ מקצועי של גורם מוסמך.
-          </li>
-          <li>
-            <strong>טעויות ובאגים טכנולוגיים&nbsp;–</strong>
-            &nbsp;ייתכנו טעויות, השמטות או אי‑דיוקים בתשובות. כמו כן, תיתכנה תקלות מערכת, תקלות רשת או הפסקות חשמל אשר עלולות להשפיע על פעילות השירות וזמינותו.
-          </li>
-          <li>
-            <strong>זמינות השירות&nbsp;–</strong>
-            &nbsp;השירות עשוי להיות לא זמין מעת לעת בשל עבודות תחזוקה, עומסים חריגים או תקלות טכניות שאינן בשליטת המפעיל.
-          </li>
-          <li>
-            <strong>אחריות המשתמש&nbsp;–</strong>
-            &nbsp;השימוש בשירות נעשה באחריות המשתמש בלבד. מומלץ לאמת מידע חשוב או רגיש לפני נקיטת פעולה, במיוחד בתחומים טכניים או בטיחותיים.
-          </li>
-          <li>
-            <strong>מקור המידע ועדכניותו&nbsp;–</strong>
-            &nbsp;המידע המועבר בסוכן מבוסס על מקורות רשמיים של היצרן ועל ידע מצטבר של היבואן. עם זאת, ייתכנו פערים בין המידע הזמין לבין שינויים, עדכונים או הוראות חדשות שטרם הוזנו למערכת.
-          </li>
-          <li>
-            <strong>זהות והיקף השירות&nbsp;–</strong>
-            &nbsp;הסוכן מופעל על ידי היבואן ונשען על מקורות רשמיים של היצרן ועל ידע מצטבר של היבואן, אך אינו מבטיח זמינות או דיוק מלא בכל מצב, ואינו מחליף שיקול דעת מקצועי או בדיקה עצמאית.
-          </li>
-          <li>
-            <strong>פרטיות ושמירת מידע&nbsp;–</strong>
-            &nbsp; כל שיחה ומידע שנמסר במסגרת השימוש בש
-          </li>
-        </ol>
-            </div></div>) }
-            </div>
-          );
-        }
-
+            <ol
+              dir="rtl"
+              className="list-decimal list-inside space-y-2 text-sm leading-relaxed text-gray-800"
+            >
+              <li>
+                <strong>הגבלת אחריות על תוכן התשובות&nbsp;–</strong>
+                &nbsp;התשובות ניתנות לצרכים אינפורמטיביים בלבד ואינן מחליפות ייעוץ מקצועי.
+              </li>
+              <li>
+                <strong>טעויות ובאגים טכנולוגיים&nbsp;–</strong>
+                &nbsp;ייתכנו טעויות או אי-דיוקים בתשובות ותקלות מערכת/רשת.
+              </li>
+              <li>
+                <strong>זמינות השירות&nbsp;–</strong>
+                &nbsp;השירות עשוי להיות לא זמין מעת לעת.
+              </li>
+              <li>
+                <strong>אחריות המשתמש&nbsp;–</strong>
+                &nbsp;השימוש בשירות באחריות המשתמש; מומלץ לאמת מידע חשוב לפני פעולה.
+              </li>
+              <li>
+                <strong>מקור המידע ועדכניותו&nbsp;–</strong>
+                &nbsp;מבוסס על מקורות רשמיים, אך ייתכנו פערים ועדכונים שלא הוטמעו.
+              </li>
+              <li>
+                <strong>פרטיות ושמירת מידע&nbsp;–</strong>
+                &nbsp;מידע יכול להישמר לצורך שיפור השירות בהתאם למדיניות הפרטיות.
+              </li>
+            </ol>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
