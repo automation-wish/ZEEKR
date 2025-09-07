@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import logoText   from "./assets/zeekr-text-logo.png";
-import logo       from "./assets/zeekr-logo.png";
+// import logo       from "./assets/zeekr-logo.png";
 import heroImage  from "./assets/Zeekr_FamilyShot_300x600.jpg"; // תמונת ההירו (רבע מסך)
 import sendIcon   from "./assets/send-icon.png";
 
