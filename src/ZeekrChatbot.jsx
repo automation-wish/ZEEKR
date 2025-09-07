@@ -73,9 +73,9 @@ export default function ZeekrChatbot() {
 
         {/* Header ממורכז */}
         <header className="w-full max-w-3xl xl:max-w-4xl mx-auto flex flex-col items-center gap-2">
-          <div className="h-20 w-20 rounded-full bg-white p-3 shadow flex items-center justify-center">
+          {/* <div className="h-20 w-20 rounded-full bg-white p-3 shadow flex items-center justify-center">
             <img src={logo} alt="icon" className="h-10 w-10" />
-          </div>
+          </div> */}
           <h2 className="text-xl font-bold">ZEEKR CHATBOT</h2>
           <p className="text-sm text-gray-600">אנחנו כאן לשירותך 24/7</p>
           <p dir="rtl" className="text-xs text-gray-500 leading-5 max-w-2xl text-center mt-1">
