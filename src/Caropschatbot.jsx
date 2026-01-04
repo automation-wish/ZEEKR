@@ -8,13 +8,6 @@ const CarIcon = () => (
   </svg>
 );
 
-// אייקון חזרה
-const BackIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-  </svg>
-);
-
 export default function CarOpsChatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -67,13 +60,9 @@ export default function CarOpsChatbot() {
 
   return (
     <div className="w-full h-screen flex flex-col bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 font-sans">
-      {/* Header */}
-      <header className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-md border-b border-white/10 shrink-0">
-        <button className="p-2 text-white/80 hover:text-white transition-colors">
-          <BackIcon />
-        </button>
+      {/* Header - ללא חץ חזרה */}
+      <header className="flex items-center justify-center px-4 py-3 bg-black/40 backdrop-blur-md border-b border-white/10 shrink-0">
         <h1 className="text-white font-semibold text-lg tracking-wide">Car Ops Bot</h1>
-        <div className="w-10" />
       </header>
 
       {/* Messages Area */}
@@ -124,7 +113,7 @@ export default function CarOpsChatbot() {
 
       {/* Input Area */}
       <footer className="shrink-0 p-4 bg-black/40 backdrop-blur-md border-t border-white/10">
-        <div className="flex items-center gap-3 max-w-2xl mx-auto flex-row-reverse">
+        <div className="flex items-center gap-2 max-w-2xl mx-auto flex-row-reverse">
           <input
             type="text"
             dir="rtl"
@@ -138,10 +127,10 @@ export default function CarOpsChatbot() {
           <button
             onClick={handleSend}
             disabled={!input.trim()}
-            className="shrink-0 w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 overflow-hidden"
+            className="shrink-0"
             aria-label="שלח"
           >
-            <img src={sendIcon} alt="send" className="w-7 h-7" />
+            <img src={sendIcon} alt="send" className="w-[56px] h-[56px]" />
           </button>
         </div>
       </footer>
