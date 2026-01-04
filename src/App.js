@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import ZeekrChatbot from "./ZeekrChatbot";
+import CarOpsChatbot from "./Caropschatbot.jsx";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
         />
       </Helmet>
 
-      <ZeekrChatbot />
+      <CarOpsChatbot />
     </>
   );
 }
